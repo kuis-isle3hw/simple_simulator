@@ -66,10 +66,14 @@ public class Computer {
     }
 
     short input(){
-        System.out.print("Input? : ");
-        if(sc.hasNextShort()) return sc.nextShort();
-        else System.out.println("Your input is invalid. Please retry.");
-        return input();
+        while(true){
+            System.out.print("Input? : ");
+            if(sc.hasNextShort()) return sc.nextShort();
+            else {
+                String invalid = sc.nextLine();
+                System.out.printf("Your input \"%s\" is invalid. Please retry.\n", invalid);
+            }
+        }        
     }
     void output(short o){
         System.out.printf("output on %d : %d\n", currentPC, o);
