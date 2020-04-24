@@ -78,64 +78,88 @@ public interface Operation {
         else if(validTokens[0].equalsIgnoreCase("ADD")){
             int rd = Integer.valueOf(validTokens[1]);
             int rs = Integer.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in ADD: "+rd);
+            if(!(0 <= rs && rs <= 7)) throw new IllegalArgumentException("invalid register number in ADD: "+rs);
             op = new Add(rd, rs);
         }
         else if(validTokens[0].equalsIgnoreCase("SUB")){
             int rd = Integer.valueOf(validTokens[1]);
             int rs = Integer.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in SUB: "+rd);
+            if(!(0 <= rs && rs <= 7)) throw new IllegalArgumentException("invalid register number in SUB: "+rs);
             op = new Sub(rd, rs);
         }
         else if(validTokens[0].equalsIgnoreCase("AND")){
             int rd = Integer.valueOf(validTokens[1]);
             int rs = Integer.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in AND: "+rd);
+            if(!(0 <= rs && rs <= 7)) throw new IllegalArgumentException("invalid register number in AND: "+rs);
             op = new And(rd, rs);
         }
         else if(validTokens[0].equalsIgnoreCase("OR")){
             int rd = Integer.valueOf(validTokens[1]);
             int rs = Integer.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in OR: "+rd);
+            if(!(0 <= rs && rs <= 7)) throw new IllegalArgumentException("invalid register number in OR: "+rs);
             op = new Or(rd, rs);
         }
         else if(validTokens[0].equalsIgnoreCase("XOR")){
             int rd = Integer.valueOf(validTokens[1]);
             int rs = Integer.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in XOR: "+rd);
+            if(!(0 <= rs && rs <= 7)) throw new IllegalArgumentException("invalid register number in XOR: "+rs);
             op = new Xor(rd, rs);
         }
         else if(validTokens[0].equalsIgnoreCase("CMP")){
             int rd = Integer.valueOf(validTokens[1]);
             int rs = Integer.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in CMP: "+rd);
+            if(!(0 <= rs && rs <= 7)) throw new IllegalArgumentException("invalid register number in CMP: "+rs);
             op = new Cmp(rd, rs);
         }
         else if(validTokens[0].equalsIgnoreCase("MOV")){
             int rd = Integer.valueOf(validTokens[1]);
             int rs = Integer.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in MOV: "+rd);
+            if(!(0 <= rs && rs <= 7)) throw new IllegalArgumentException("invalid register number in MOV: "+rs);
             op = new Mov(rd, rs);
         }
         else if(validTokens[0].equalsIgnoreCase("SLL")){
             int rd = Integer.valueOf(validTokens[1]);
             short d = Short.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in SLL: "+rd);
+            if(!(0 <= d && d <= 15)) throw new IllegalArgumentException("invalid shift length in SLL: "+d);
             op = new ShiftLeftLogical(rd, d);
         }
         else if(validTokens[0].equalsIgnoreCase("SLR")){
             int rd = Integer.valueOf(validTokens[1]);
             short d = Short.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in SLR: "+rd);
+            if(!(0 <= d && d <= 15)) throw new IllegalArgumentException("invalid shift length in SLR: "+d);
             op = new ShiftLeftRotate(rd, d);
         }
         else if(validTokens[0].equalsIgnoreCase("SRL")){
             int rd = Integer.valueOf(validTokens[1]);
             short d = Short.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in SRL: "+rd);
+            if(!(0 <= d && d <= 15)) throw new IllegalArgumentException("invalid shift length in SRL: "+d);
             op = new ShiftRightLogical(rd, d);
         }
         else if(validTokens[0].equalsIgnoreCase("SRA")){
             int rd = Integer.valueOf(validTokens[1]);
             short d = Short.valueOf(validTokens[2]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in SRA: "+rd);
+            if(!(0 <= d && d <= 15)) throw new IllegalArgumentException("invalid shift length in SRA: "+d);
             op = new ShiftRightArith(rd, d);
         }
         else if(validTokens[0].equalsIgnoreCase("IN")){
             int rd = Integer.valueOf(validTokens[1]);
+            if(!(0 <= rd && rd <= 7)) throw new IllegalArgumentException("invalid register number in IN: "+rd);
             op = new Input(rd);
         }
         else if(validTokens[0].equalsIgnoreCase("OUT")){
             int rs = Integer.valueOf(validTokens[1]);
+            if(!(0 <= rs && rs <= 7)) throw new IllegalArgumentException("invalid register number in OUT: "+rs);
             op = new Output(rs);
         }
         else if(validTokens[0].equalsIgnoreCase("HLT")){
@@ -145,37 +169,50 @@ public interface Operation {
             int ra = Integer.valueOf(validTokens[1]);
             short d = Short.valueOf(validTokens[2]);
             int rb = Integer.valueOf(validTokens[3]);
+            if(!(0 <= ra && ra <= 7)) throw new IllegalArgumentException("invalid register number in LD: "+ra);
+            if(!(0 <= rb && rb <= 7)) throw new IllegalArgumentException("invalid register number in LD: "+rb);
+            if(!(-128 <= d && d <= 127)) throw new IllegalArgumentException("invalid immediate value in LD: "+d);
             op = new Load(ra,rb, d);
         }
         else if(validTokens[0].equalsIgnoreCase("ST")){
             int ra = Integer.valueOf(validTokens[1]);
             short d = Short.valueOf(validTokens[2]);
             int rb = Integer.valueOf(validTokens[3]);
+            if(!(0 <= ra && ra <= 7)) throw new IllegalArgumentException("invalid register number in ST: "+ra);
+            if(!(0 <= rb && rb <= 7)) throw new IllegalArgumentException("invalid register number in ST: "+rb);
+            if(!(-128 <= d && d <= 127)) throw new IllegalArgumentException("invalid immediate value in ST: "+d);
             op = new Store(ra,rb, d);
         }
         else if(validTokens[0].equalsIgnoreCase("LI")){
             int rb = Integer.valueOf(validTokens[1]);
             short d = Short.valueOf(validTokens[2]);
+            if(!(0 <= rb && rb <= 7)) throw new IllegalArgumentException("invalid register number in LI: "+rb);
+            if(!(-128 <= d && d <= 127)) throw new IllegalArgumentException("invalid immediate value in LI: "+d);
             op = new LoadImmediate(rb, d);
         }
         else if(validTokens[0].equalsIgnoreCase("B")){
             short d = Short.valueOf(validTokens[1]);
+            if(!(-128 <= d && d <= 127)) throw new IllegalArgumentException("invalid immediate value in B: "+d);
             op = new Branch(d);
         }
         else if(validTokens[0].equalsIgnoreCase("BE")){
             short d = Short.valueOf(validTokens[1]);
+            if(!(-128 <= d && d <= 127)) throw new IllegalArgumentException("invalid immediate value in BE: "+d);
             op = new BranchEqual(d);
         }
         else if(validTokens[0].equalsIgnoreCase("BLT")){
             short d = Short.valueOf(validTokens[1]);
+            if(!(-128 <= d && d <= 127)) throw new IllegalArgumentException("invalid immediate value in BLT: "+d);
             op = new BranchLess(d);
         }
         else if(validTokens[0].equalsIgnoreCase("BLE")){
             short d = Short.valueOf(validTokens[1]);
+            if(!(-128 <= d && d <= 127)) throw new IllegalArgumentException("invalid immediate value in BLE: "+d);
             op = new BranchLeq(d);
         }
         else if(validTokens[0].equalsIgnoreCase("BNE")){
             short d = Short.valueOf(validTokens[1]);
+            if(!(-128 <= d && d <= 127)) throw new IllegalArgumentException("invalid immediate value in BNE: "+d);
             op = new BranchNeq(d);
         }
         else if(validTokens.length==1){

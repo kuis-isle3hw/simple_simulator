@@ -46,7 +46,8 @@ public class Main {
                 pc++;
             }catch(Exception e){
                 if(!s.trim().split("//")[0].equals("")){
-                    System.err.printf("caution: the line %d is not operation: %s\n", line, s);
+                    System.err.printf("caution: \"%s\" at line %d is not operation\nmessage : %s\n",
+                                       s, line, e.getMessage());
                 }
             }finally {
                 line++;
