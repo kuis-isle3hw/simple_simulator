@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="SimpleSimulator" default="jar" basedir=".">
+
+    <!-- ソースファイルのディレクトリ -->
+    <property name="build.src" value="src" />
+
+    <!-- Classファイルを出力するディレクトリ -->
+    <property name="build.dest" value="classes" />
+
+    <!-- プロジェクト名 -->
+    <property name="project" value="SimpleSimulator" />
+
+    <!-- 出力jarファイル -->
+    <property name="build.jar" value="${project}.jar" />
+
+    <!-- jarファイル作成 -->
+    <target name="jar" depends="compile">
+        <jar jarfile="${build.jar}" basedir="${build.dest}">
+        <manifest>
+            <attribute name="Main-Class" value="Main" />
+        </manifest>
+        </jar>
+    </target>
+
+    <!-- コンパイル実行 -->
+    <target name="compile">
+        <mkdir dir="${build.dest}" />
+        <javac srcdir="${build.src}" debug="${debug}" destdir="${build.dest}" />
+    </target>
+
+    <!-- ファイルのクリーンアップ -->
+    <target name="clean">
+        <delete dir="${build.dest}" />
+        <delete file="${build.jar}" />
+    </target>
+
+</project>
