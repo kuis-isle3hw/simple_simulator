@@ -20,8 +20,8 @@ java -jar SimpleSimulator.jar [-d] [-m] [input_file]
 
 ビルドには下記のツールとバージョンを使用しています．
 
-- AdoptOpenJDK (build 11.0.7+10)
-- Apache Ant(TM) version 1.10.6
+- [AdoptOpenJDK (build 11.0.7+10)](https://adoptopenjdk.net/)
+- [Apache Ant(TM) version 1.10.6](https://ant.apache.org/)
 
 `ant`はVSCodeのビルドタスクとして登録してあるので，よしなにしてください．
 
