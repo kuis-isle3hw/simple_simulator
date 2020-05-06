@@ -1,6 +1,7 @@
 # simple_simulator
 
-[計算機科学実験及演習3(HW)](http://www.lab3.kuis.kyoto-u.ac.jp/~takase/le3a/)の仕様に準拠する16bit,4096wordsのSIMPLEシミュレータです. Javaで記述されています.
+[計算機科学実験及演習3(HW)](http://www.lab3.kuis.kyoto-u.ac.jp/~takase/le3a/)の仕様に準拠する16bit,4096wordsのSIMPLEの命令セットシミュレータです. Javaで記述されています.  
+命令レベルのシミュレーションであるため, アセンブリ記述のコードの機能のみを検証できることに注意してください. 
 
 ## 実行方法
 
