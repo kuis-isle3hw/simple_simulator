@@ -22,17 +22,19 @@ public class Main {
     public static void main(String[] args) throws Exception {
         boolean debug = false;
         boolean mifOutput = true;
-        BufferedReader in = new BufferedReader(new FileReader("sample.txt"));
+        String inputFileName = "sample.txt";
+        
 
         for(String s: args){
             if(s.equals("-d")) debug = true;
-            if(s.equals("-m")) mifOutput = true;
-            File f = new File(s);
-            if(f.exists() && f.isFile()) in = new BufferedReader(new FileReader(f));
+            else if(s.equals("-m")) mifOutput = true;
+            else if(new File(s).isFile()) inputFileName = s;
         }
-
-
-        Scanner sc = new Scanner(in);
+        if(!new File(inputFileName).isFile()) {
+            System.out.printf("File \"%s\" does not exit.", inputFileName);
+            return;
+        }
+        Scanner sc = new Scanner(new BufferedReader(new FileReader(inputFileName)));
 
         Computer com = new Computer(debug);
 
