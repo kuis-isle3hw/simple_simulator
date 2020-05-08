@@ -14,7 +14,7 @@ public class Main {
         writer.write("DATA_RADIX = DEC;\n");
         writer.write("CONTENT BEGIN\n");
         for(int n=0; n<4096; n++){
-            writer.write(n + " : " + com.getMemory(n) + "\n"); 
+            writer.write(n + " : " + com.getMemory(n) + ";\n"); 
         }
         writer.write("END\n");
         writer.close();
