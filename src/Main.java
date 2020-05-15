@@ -21,7 +21,7 @@ public class Main {
     }
     public static void main(String[] args) throws Exception {
         boolean debug = false;
-        boolean mifOutput = true;
+        boolean mifOutput = false;
         String inputFileName = "sample.txt";
         
 
