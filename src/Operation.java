@@ -409,7 +409,7 @@ class ShiftLeftRotate implements Operation{
         this.d = d;
     }
     public void execute(Computer com){
-        int result = com.getRegister(rd)<<d + Operation.cut(com.getRegister(rd), 15, d);
+        int result = com.getRegister(rd)<<d | Operation.cut(com.getRegister(rd), 16 - d, d);
         boolean s = ((short)result)<0;
         boolean z = ((short)result)==0;
         boolean c = false;
