@@ -8,6 +8,7 @@ public class Computer {
     boolean halt;
 
     boolean debug;
+    int instructionCount; // 実行した命令数
 
     private final Scanner sc;
 
@@ -17,6 +18,7 @@ public class Computer {
         this.currentPC = 0;
         this.sc = new Scanner(System.in);
         this.debug = false;
+        this.instructionCount = 0;
     }
     public Computer(boolean d){
         this.mem = new Memory();
@@ -24,6 +26,7 @@ public class Computer {
         this.currentPC = 0;
         this.sc = new Scanner(System.in);
         this.debug = d;
+        this.instructionCount = 0;
     }
     short getMemory(int index){
         return mem.get(index);
@@ -90,7 +93,11 @@ public class Computer {
                 System.err.println(this);
             }
             currentPC++;
+            instructionCount++;
         }
+
+
+        System.out.printf("number of executed instractions: %d\n", instructionCount);
     }
 
     public String toString(){
