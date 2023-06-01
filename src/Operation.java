@@ -24,7 +24,7 @@ public interface Operation {
                 short ra = cut(binary, 11, 3);
                 short rb = cut(binary, 8,3);
                 short d = cut(binary, 0, 8);
-                return new Store(ra,rb,d);
+                return new Store(ra,rb,extend(d, 8));
             }
             case 2:{
                 int rb = cut(binary, 8,3);
@@ -528,7 +528,7 @@ class Load implements Operation{
         com.setRegister(ra, com.getMemory(com.getRegister(rb) + d));
     }
     public short toBinary(){
-        return (short) ((0b00 << 14) + (ra << 11) + (rb << 8) + (d << 0));
+        return (short) ((0b00 << 14) + (ra << 11) + (rb << 8) + (Operation.cut((short) d, 0,8) << 0));
     }
     public String toString(){
         return "LD "+ ra + ","+d+"("+rb+")";
@@ -536,7 +536,7 @@ class Load implements Operation{
 }
 class Store implements Operation{
     int ra, rb;
-    short d;
+    int d;
     public Store(int ra, int rb, short d){
         this.ra = ra;
         this.rb = rb;
@@ -546,7 +546,7 @@ class Store implements Operation{
         com.setMemory(com.getRegister(rb) + d, com.getRegister(ra));
     }
     public short toBinary(){
-        return (short) ((0b01 << 14) + (ra << 11) + (rb << 8) + (d << 0));
+        return (short) ((0b01 << 14) + (ra << 11) + (rb << 8) + (Operation.cut((short) d, 0,8) << 0 ));
     }
     public String toString(){
         return "ST "+ ra + ","+d+"("+rb+")";
