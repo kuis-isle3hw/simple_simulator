@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Main {
     
-    static void makeMIF(Computer com) throws Exception{
-        File mif = new File("output.mif");
+    static void makeMIF(Computer com,String filename) throws Exception{
+        File mif = new File(filename);
         if(!mif.exists()) mif.createNewFile();
         FileWriter writer = new FileWriter(mif);
         writer.write("WIDTH = 16;\n");
@@ -56,8 +56,13 @@ public class Main {
             }
         }
 
-        if(mifOutput) makeMIF(com);
+        if(mifOutput) makeMIF(com,"output.mif");
 
         com.execute();
+
+        if(mifOutput && debug) makeMIF(com,"debug_output.mif");
+
+
+
     }
 }
